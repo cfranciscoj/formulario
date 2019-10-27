@@ -1,2 +1,2 @@
 # formulario
-Formulario para registrar antecedentes
+Formulario para registrar datos

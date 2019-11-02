@@ -13,7 +13,6 @@
 @section('content')
     <form method="POST" action="{{ route('formulario') }}" name="frmFormularios" id="frmFormularios">
       <input type="hidden" name="ruta_agrupacion" id="ruta_agrupacion" value="{{ route('agrupacion') }}">
-      <input type="hidden" name="ruta_etiqueta" id="ruta_etiqueta" value="">
       {!! csrf_field() !!}
       <!-- Inicio bloque 1 -->
       <div class="row">
@@ -76,11 +75,8 @@
               </div>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-              <div class="form-group col-sm-6">
-                <label for="fechinicio"></label>
+            <div class="box-body" id="formulario-container">
 
-              </div>
             </div>
             <!-- ./box-body -->
             <div class="box-footer">

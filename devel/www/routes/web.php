@@ -22,9 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Comun - Formulario
 Route::get('/comun/formulario', 'Comun\FormularioController@index')->name('formulario');
 Route::post('/comun/agrupacion', 'Comun\FormularioController@agrupacion')->name('agrupacion');
-Route::post('/comun/etiqueta', 'Comun\FormularioController@etiqueta')->name('etiqueta');
 
 
+// Admin - Profile
 
 
 

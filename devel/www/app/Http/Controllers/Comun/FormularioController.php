@@ -76,31 +76,22 @@ class FormularioController extends Controller
       $FormularioController = new FormularioController;
 
       foreach ($Agrupaciones as $valor) {
-          //$array_data[] = $agru_vacio;
           $array_data["agru"][] = $valor;
-
-          $array_agrupacion[] = $valor;
-
-          //var_dump($array_agrupacion);
+          $array_agrupacion[0] = $valor;
 
           foreach ($array_agrupacion as $obj) {
              $ide_agrupacion   = $obj->ide_agrupacion;
            }
 
-          //$ide_agrupacion = $array_agrupacion[$i]["ide_agrupacion"];
-          //$ide_agrupacion = 13;
-          $Etiquetas = $FormularioController->etiqueta($ide_agrupacion);
-          //var_dump($Etiquetas);
 
-          // foreach ($Etiquetas as $valor_etiqueta) {
-          //   $array_etiquetas[] = $valor_etiqueta;
-          //
-          // }
-          //var_dump($array_etiquetas);
-          $array_data["agru"]["eti1"]["eti"] = array();
-          // $array_data["agru"]["eti"][] = json_dencode($array_etiquetas);
-          $array_data["agru"]["eti1"]["eti"][] = json_decode($Etiquetas);
-          $json_data["datos"][] = $array_data;
+          $Etiquetas = $FormularioController->etiqueta($ide_agrupacion);
+
+          $array_etiquetas["eti"] = array();
+          $array_etiquetas["eti"] = json_decode($Etiquetas, true);
+
+          $resultado = array_merge(array($array_data["agru"]["0"]),array($array_etiquetas));
+
+          $json_data["datos"][] = $resultado;
 
           $array_data = array();
           foreach ($array_data as $j => $value) {

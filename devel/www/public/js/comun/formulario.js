@@ -1,12 +1,22 @@
 $(document).ready(function() {
 
     //window.sessionStorage();
+    //$("#formulario-fila").hide();
 
     $('.js-formulario-basic-single').select2();
     $('#mostrar_formulario').click(function(e){
         e.preventDefault();
         showForm();
     });
+
+    // $('.input[type="checkbox"]').on('ifCreated ifClicked ifChanged ifChecked ifUnchecked ifDisabled ifEnabled ifDestroyed', function(event){
+    //           callbacks_list.prepend('<li><span>#' + this.id + '</span> is ' + event.type.replace('if', '').toLowerCase() + '</li>');
+    //         }).iCheck({
+    //     checkboxClass: 'icheckbox_square-blue',
+    //     radioClass: 'iradio_square-blue',
+    //     increaseArea: '20%'
+    // });
+
 
 
 
@@ -17,7 +27,7 @@ $(document).ready(function() {
       var output_sm6       = '';
       var output_sm12      = '';
       var output_uni       = '';
-
+      var correcto_eti     = false;
 
       $.ajax({
           headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -50,37 +60,19 @@ $(document).ready(function() {
                   // output_sm12 += '<div class="form-group col-sm-12"> </div>\n';
                   $.each(data.eti, function (keye, dataeti) {
                     //Sólo para las etiquetas finales
-                    //console.log("correcto_eti = " + correcto_eti);
                     if(keye == "correctoe" && dataeti){
-                      //console.log("Entró al if de la etiqueta correctoe = true");
-                      //var correcto_eti = true;
-                      window.sessionStorage.setItem('correcto_eti',true);
-                    }
-                    else {
-                      //var correcto_eti = false;
-                      window.sessionStorage.setItem('correcto_eti',false);
-                    }
+                      //correcto_eti = true;
+                      output_sm6 += '<div class="form-group col-sm-6 list-chk skin-section">\n';
+                      $.each(data.eti.datose, function (indexe, etique) {
+                          //console.log("key: " + indexe + " data: " + etique.etiqueta);
+                          //output_sm6 += '\n';
+                          if(etique.tpo_val_etiqueta == "CHK"){
+                            output_sm6+= '\t<input type="checkbox" name="chke-'+ etique.ide_etiqueta +'" id="chke-'+ etique.ide_etiqueta +'" value="1"> '+ etique.etiqueta +'<br>\n';
+                          }
 
-
-                      //console.log("correcto_eti = " + correcto_eti);
-                      // console.log("dataeti: " + dataeti);
-                      output_sm6 += '<div class="form-group col-sm-6">\n';
-                      $.each(dataeti.datose, function (indexe, etique) {
-                        correcto_eti = window.sessionStorage.getItem('correcto_eti');
-                        console.log("correcto_eti = " + correcto_eti);
-                        if(correcto_eti){
-                          console.log("key: " + indexe + " data: " + etique.etiqueta);
-                       //console.log("Etiqueta:" + indexe + ":" + etique);
-
-                         //output_sm6 += '\n';
-
-                            if(datostique.tpo_val_etiqueta == "CHK"){
-                              output_sm6+= '\t<input type="checkbox" name="chk'+ etique.ide_etiqueta +'" id="chk'+ etique.ide_etiqueta +'" value="1">'+ etique.etiqueta +'<br>\n';
-                            }
-
-                        }
                        })
                        output_sm6+= '</div>\n';
+                    }
                   })
                   output_uni = output_sm12 + output_sm6;
                })
@@ -89,10 +81,19 @@ $(document).ready(function() {
               })
               $("#formulario-container").html(output);
               $("#formulario-container").show();
+              $("#formulario-fila").show();
            }
            else {
              console.log( "Entró al else");
+             $("#formulario-fila").hide();
            }
+           $('.list-chk input').on('ifCreated ifClicked ifChanged ifChecked ifUnchecked', function(event){
+                   console.log('chk: ' + this.id);
+                   }).iCheck({
+               checkboxClass: 'icheckbox_square-blue',
+               radioClass: 'iradio_square-blue',
+               increaseArea: '20%'
+           });
        })
        .fail(function( jqXHR, textStatus, errorThrown ) {
            if ( console && console.log ) {

@@ -1,0 +1,12 @@
+.ocultar {
+  display: none;
+  visibility: hidden;
+}
+
+.oculto {
+  display: none;
+}
+
+.list-chk{
+  position:relative;
+}

@@ -64,7 +64,7 @@
       <!-- /.row -->
       <!-- Fin bloque 1 -->
       <!-- Inicio bloque 2 -->
-      <div class="row">
+      <div class="row oculto" id="formulario-fila">
         <div class="form-group col-sm-12">
           <div class="box">
             <div class="box-header with-border">
@@ -75,7 +75,7 @@
               </div>
             </div>
             <!-- /.box-header -->
-            <div class="box-body" id="formulario-container">
+            <div class="box-body skin skin-square" id="formulario-container">
 
             </div>
             <!-- ./box-body -->
@@ -106,8 +106,15 @@
 
 @stop
 
+@section('css')
+
+  <link href="{{ asset('css/comun/formulario.css') }}" type="text/css" rel="stylesheet">
+  <link href="{{ asset('plugins/icheck-1.0.2/skins/square/blue.css') }}" type="text/css" rel="stylesheet">
+@stop
+
+
 @section('js')
 
   <script src="{{ asset('js/comun/formulario.js') }}" type="text/javascript"></script>
-
+  <script src="{{ asset('plugins/icheck-1.0.2/icheck.js') }}" type="text/javascript"></script>
 @stop

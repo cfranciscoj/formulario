@@ -14,7 +14,7 @@ $(document).ready(function() {
         return this.etiqueta;
       }
     }
-    //mycar = new Car("Ford");
+
 
     $('.js-formulario-basic-single').select2();
     $('#mostrar_formulario').click(function(e){
@@ -137,8 +137,7 @@ $(document).ready(function() {
     function showForm_2(event, ui) {
       var ruta_agrupacion2  = $('#ruta_agrupacion2').val();
       var ide_titulo        = $('#formularios').val();
-      var output_titulo     = '';
-      var output_final      = '';
+
 
       //var obj_etiqueta      = new OutEti();
 
@@ -157,6 +156,9 @@ $(document).ready(function() {
             var ide_agrupacion  = '0';
             var nom_agrupacion  = '';
             var out_etique      = '';
+            var output_titulo     = '';
+            var output_final      = '\n';
+
             console.log( "La solicitud se ha completado correctamente." );
             if (response.correcto) {
 
@@ -169,15 +171,14 @@ $(document).ready(function() {
                   console.log("out_etique: " + out_etique);
               })
               output_final += out_etique;
+              $("#formulario-container").html(output_final);
+              $("#formulario-container").show();
+              $("#formulario-fila").show();
             }
             else {
-              console.log( "Entró al else");
+              console.log( "Entró al else del response");
               $("#formulario-fila").hide();
             }
-            $("#formulario-container").html(output_final);
-            $("#formulario-container").show();
-            $("#formulario-fila").show();
-
             $('.list-chk input').on('ifCreated ifClicked ifChanged ifChecked ifUnchecked', function(event){
                     //console.log('chk: ' + this.id);
                     }).iCheck({
@@ -233,8 +234,8 @@ $(document).ready(function() {
               output_unificado = '';
               //console.log( "Entró al else de Etiqueta");
             }
-            console.log("output_unificado: " + output_unificado);
-            return output_unificado;
+              // console.log("output_unificado: " + output_unificado);
+              // return output_unificado;
 
           })
           .fail(function( jqXHR, textStatus, errorThrown ) {
@@ -244,7 +245,8 @@ $(document).ready(function() {
                   return output_unificado;
               }
           })
-
+          console.log("output_unificado: " + output_unificado);
+          return output_unificado;
 
     }
 

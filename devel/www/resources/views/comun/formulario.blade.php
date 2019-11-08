@@ -13,6 +13,8 @@
 @section('content')
     <form method="POST" action="{{ route('formulario') }}" name="frmFormularios" id="frmFormularios">
       <input type="hidden" name="ruta_agrupacion" id="ruta_agrupacion" value="{{ route('agrupacion') }}">
+      <input type="hidden" name="ruta_agrupacion2" id="ruta_agrupacion2" value="{{ route('agrupacion2') }}">
+      <input type="hidden" name="ruta_etiqueta2" id="ruta_etiqueta2" value="{{ route('etiqueta2') }}">
       {!! csrf_field() !!}
       <!-- Inicio bloque 1 -->
       <div class="row">

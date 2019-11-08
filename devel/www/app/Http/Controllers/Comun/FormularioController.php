@@ -125,7 +125,7 @@ class FormularioController extends Controller
     }
 
 // Etiquetas
-    public function etiqueta($request)
+    public function etiqueta($ide_agrupacion)
     {
       $array_data = array();
       $array_vacio = array("ide_etiqueta"     => "0",
@@ -135,7 +135,7 @@ class FormularioController extends Controller
       $i = 0;
 
 
-      $ide_agrupacion = $request;
+      //$ide_agrupacion = $request;
       $Formulario = new Formulario;
       $Etiquetas = $Formulario->TraeEtiqueta($ide_agrupacion);
       //var_dump($Etiquetas);
@@ -158,4 +158,72 @@ class FormularioController extends Controller
       return json_encode($array_data);
     }
 
+// AGRUPACIÓN DOS
+    public function agrupacion2(Request $request)
+    {
+
+      $array_data = array();
+      $array_vacio = array("ide_agrupacion"     => "0",
+                           "ide_titulo"         => "0",
+                           "agrupacion"         => "0",
+                           "tpo_val_agrupacion" => "0");
+      $i = 0;
+
+
+      $ide_titulo = request()->ide_titulo;
+      $Formulario = new Formulario;
+      $Agrupaciones = $Formulario->TraeAgrupacion($ide_titulo);
+      //var_dump($Etiquetas);
+      foreach ($Agrupaciones as $valor) {
+          $array_data["agru"][] = $valor;
+          $i++;
+      }
+
+
+      if( $i > 0 ) {
+        $array_data["tot_registros"] = $i;
+        $array_data["correcto"] = true;
+      }
+      else{
+        $array_data["agru"][] = $array_vacio;
+        $array_data["tot_registros"] = $i;
+        $array_data["correcto"] = false;
+
+        }
+      return json_encode($array_data);
+    }
+
+//ETIQUETA DOS
+    public function etiqueta2(Request $request)
+    {
+      $array_data = array();
+      $array_vacio = array("ide_etiqueta"     => "0",
+                           "ide_agrupacion"   => "0",
+                           "etiqueta"         => "0",
+                           "tpo_val_etiqueta" => "0");
+      $i = 0;
+
+
+      $ide_agrupacion = request()->ide_agrupacion;
+      $Formulario = new Formulario;
+      $Etiquetas = $Formulario->TraeEtiqueta($ide_agrupacion);
+      //var_dump($Etiquetas);
+      foreach ($Etiquetas as $valor) {
+          $array_data["datose"][] = $valor;
+          $i++;
+      }
+
+
+      if( $i > 0 ) {
+        $array_data["tot_registrose"] = $i;
+        $array_data["correctoe"] = true;
+      }
+      else{
+        $array_data["datose"][] = $array_vacio;
+        $array_data["tot_registrose"] = $i;
+        $array_data["correctoe"] = false;
+
+        }
+      return json_encode($array_data);
+    }
 }

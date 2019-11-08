@@ -150,7 +150,9 @@ $(document).ready(function() {
           // Formato de datos que se espera en la respuesta
           dataType: "json",
           // URL a la que se enviará la solicitud Ajax
-          url: ruta_agrupacion2
+          url: ruta_agrupacion2,
+          // syncronico
+          async: false
           })
           .done(function( response, textStatus, jqXHR ) {
             var ide_agrupacion  = '0';
@@ -162,15 +164,25 @@ $(document).ready(function() {
             console.log( "La solicitud se ha completado correctamente." );
             if (response.correcto) {
 
-
+              output_titulo = '\n';
               $.each(response.agru, function(key, value) {
-                  out_etique += trae_etiquetas(value.ide_agrupacion) + '\n';
-
-
+                  out_etique = trae_etiquetas(value.ide_agrupacion) + '\n';
+                  if (out_etique == '0'){
+                    output_titulo += '\n<div class="form-group col-sm-12">\n';
+                    output_titulo += value.agrupacion;
+                    output_titulo += '\n</div>\n';
+                  }
+                  else {
+                    output_titulo += '\n<div class="form-group col-sm-6">\n';
+                    output_titulo += value.agrupacion;
+                    output_titulo += '\n</div>\n';
+                  }
+                  output_titulo += output_titulo + out_etique;
                   //output_unificado += output_titulo + output_etiqueta;
-                  console.log("out_etique: " + out_etique);
+
               })
-              output_final += out_etique;
+              console.log("out_etique: " + output_titulo);
+              output_final += output_titulo;
               $("#formulario-container").html(output_final);
               $("#formulario-container").show();
               $("#formulario-fila").show();
@@ -199,7 +211,7 @@ $(document).ready(function() {
 // Trae etiquetas listas para imprimir
     function trae_etiquetas(ide_agrupa){
       var ruta_etiqueta2  = $('#ruta_etiqueta2').val();
-      var output_etiqueta   = '\n';
+      var output_etiqueta = '\n';
       var output_unificado  = '';
       $.ajax({
           headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -212,7 +224,7 @@ $(document).ready(function() {
           // URL a la que se enviará la solicitud Ajax
           url: ruta_etiqueta2,
           // syncronico
-          async: false,
+          async: false
           })
           .done(function( respuesta, textStatus, jqXHR ) {
             if (respuesta.correctoe) {
@@ -223,15 +235,32 @@ $(document).ready(function() {
                 if(datae.tpo_val_etiqueta == "CHK"){
                   output_etiqueta += '\t<input type="checkbox" name="chke-'+ datae.ide_etiqueta +'" id="chke-'+ datae.ide_etiqueta +'" value="1"> '+ datae.etiqueta +'<br>\n';
                 }
+                if(datae.tpo_val_etiqueta == "TXT"){
+                  output_etiqueta += '\t<label for="txte-'+ datae.ide_etiqueta +'">' + datae.etiqueta + '</label>';
+                  output_etiqueta += ' <input type="text" name="txte-'+ datae.ide_etiqueta +'" id="txte-'+ datae.ide_etiqueta +'"><br>\n';
+                }
+                if(datae.tpo_val_etiqueta == "GLO"){
+                  output_etiqueta += '\t<label for="gloe-'+ datae.ide_etiqueta +'">' + datae.etiqueta + '</label>';
+                  output_etiqueta += ' <textarea rows="4" cols="50" name="gloe-'+ datae.ide_etiqueta +'"></textarea><br>\n';
+                }
+                if(datae.tpo_val_etiqueta == "RAD"){
+                  output_etiqueta += '\t<input type="radio" name="rade-'+ datae.ide_agrupacion +'" id="rade-'+ datae.ide_agrupacion +'" value="'+ datae.ide_etiqueta +'"> '+ datae.etiqueta +'<br>\n';
+                }
+                if(datae.tpo_val_etiqueta == "0"){
+                  output_etiqueta = "0";
+                }
               })
-              output_etiqueta += '</div>\n';
+              if (output_etiqueta != "0"){
+                  output_etiqueta += '</div>\n';
+              }
+
               output_unificado += output_etiqueta;
 
 
 
             }
             else {
-              output_unificado = '';
+              output_unificado = '0';
               //console.log( "Entró al else de Etiqueta");
             }
               // console.log("output_unificado: " + output_unificado);
@@ -245,7 +274,7 @@ $(document).ready(function() {
                   return output_unificado;
               }
           })
-          console.log("output_unificado: " + output_unificado);
+          //console.log("output_unificado: " + output_unificado);
           return output_unificado;
 
     }

@@ -3,17 +3,17 @@ $(document).ready(function() {
     //window.sessionStorage();
     //$("#formulario-fila").hide();
 
-    class OutEti {
-      constructor() {
-        this.etiqueta = '';
-      }
-      act_etiqueta(brand) {
-        this.etiqueta = brand;
-      }
-      out_etiqueta() {
-        return this.etiqueta;
-      }
-    }
+    // class OutEti {
+    //   constructor() {
+    //     this.etiqueta = '';
+    //   }
+    //   act_etiqueta(brand) {
+    //     this.etiqueta = brand;
+    //   }
+    //   out_etiqueta() {
+    //     return this.etiqueta;
+    //   }
+    // }
 
 
     $('.js-formulario-basic-single').select2();
@@ -33,106 +33,106 @@ $(document).ready(function() {
 
 
 
-    function showForm(event, ui) {
-      var ruta_agrupacion  = $('#ruta_agrupacion').val();
-      var ide_titulo       = $('#formularios').val();
-      var output           = '';
-      var output_sm6       = '';
-      var output_sm12      = '';
-      var output_uni       = '';
-
-
-      $.ajax({
-          headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-          // En data puedes utilizar un objeto JSON, un array o un query string
-          data: {"ide_titulo" : ide_titulo},
-          //Cambiar a type: POST si necesario
-          type: "POST",
-          // Formato de datos que se espera en la respuesta
-          dataType: "json",
-          // URL a la que se enviará la solicitud Ajax
-          url: ruta_agrupacion,
-      })
-       .done(function( response, textStatus, jqXHR ) {
-           var correcto_agru    = false;
-           var nombre_agru      = '';
-
-           if ( console && console.log ) {
-               console.log( "La solicitud se ha completado correctamente." );
-           }
-           if (response.correcto) {
-
-             output_uni = '';
-             output_sm6 = '';
-             output_sm12 = '\n';
-             $.each(response.datos, function(key, value) {
-               $.each(value, function (keya, data) {
-
-                   if (keya == 0){
-                     //Para completar lo que tiene que hacer la Agrupación
-                     correcto_agru = true;
-                     nombre_agru = data.agrupacion;
-                   }
-                   else{
-                     correcto_agru = false;
-                     nombre_agru = '';
-                   }
-                  // output_uni += '\n';
-                  // output_sm12 += '<div class="form-group col-sm-12"> </div>\n';
-                  $.each(data.eti, function (keye, dataeti) {
-                    //console.log("keya: " + keya + " data: " + nombre_agru + ' keye: ' + keye + ' !dataeti: ' + !dataeti);
-                    if (correcto_agru && keye == "correctoe" && !dataeti){
-                     //Para completar lo que tiene que hacer la Agrupación
-                     console.log("data: " + nombre_agru);
-                     output_sm12 += '<div class="form-group col-sm-12">'+ nombre_agru +'</div>\n';
-                    }
-
-                    //Sólo para las etiquetas finales
-                    if(keye == "correctoe" && dataeti){
-
-                      output_sm6 += '<div class="form-group col-sm-6 list-chk skin-section">\n';
-                      $.each(data.eti.datose, function (indexe, etique) {
-                          //console.log("key: " + indexe + " data: " + etique.etiqueta);
-                          //output_sm6 += '\n';
-                          if(etique.tpo_val_etiqueta == "CHK"){
-                            output_sm6+= '\t<input type="checkbox" name="chke-'+ etique.ide_etiqueta +'" id="chke-'+ etique.ide_etiqueta +'" value="1"> '+ etique.etiqueta +'<br>\n';
-                          }
-
-                       })
-                       output_sm6+= '</div>\n';
-                    }
-                  })
-                  output_uni += output_sm12 + output_sm6;
-                  output_sm12 = '';
-                  output_sm6 = '';
-               })
-               output = output_uni;
-
-              })
-              $("#formulario-container").html(output);
-              $("#formulario-container").show();
-              $("#formulario-fila").show();
-           }
-           else {
-             console.log( "Entró al else");
-             $("#formulario-fila").hide();
-           }
-           $('.list-chk input').on('ifCreated ifClicked ifChanged ifChecked ifUnchecked', function(event){
-                   //console.log('chk: ' + this.id);
-                   }).iCheck({
-               checkboxClass: 'icheckbox_square-blue',
-               radioClass: 'iradio_square-blue',
-               increaseArea: '20%'
-           });
-       })
-       .fail(function( jqXHR, textStatus, errorThrown ) {
-           if ( console && console.log ) {
-               console.log( "La solicitud a fallado: " +  textStatus);
-           }
-      })
-
-
-    }
+    // function showForm(event, ui) {
+    //   var ruta_agrupacion  = $('#ruta_agrupacion').val();
+    //   var ide_titulo       = $('#formularios').val();
+    //   var output           = '';
+    //   var output_sm6       = '';
+    //   var output_sm12      = '';
+    //   var output_uni       = '';
+    //
+    //
+    //   $.ajax({
+    //       headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    //       // En data puedes utilizar un objeto JSON, un array o un query string
+    //       data: {"ide_titulo" : ide_titulo},
+    //       //Cambiar a type: POST si necesario
+    //       type: "POST",
+    //       // Formato de datos que se espera en la respuesta
+    //       dataType: "json",
+    //       // URL a la que se enviará la solicitud Ajax
+    //       url: ruta_agrupacion,
+    //   })
+    //    .done(function( response, textStatus, jqXHR ) {
+    //        var correcto_agru    = false;
+    //        var nombre_agru      = '';
+    //
+    //        if ( console && console.log ) {
+    //            console.log( "La solicitud se ha completado correctamente." );
+    //        }
+    //        if (response.correcto) {
+    //
+    //          output_uni = '';
+    //          output_sm6 = '';
+    //          output_sm12 = '\n';
+    //          $.each(response.datos, function(key, value) {
+    //            $.each(value, function (keya, data) {
+    //
+    //                if (keya == 0){
+    //                  //Para completar lo que tiene que hacer la Agrupación
+    //                  correcto_agru = true;
+    //                  nombre_agru = data.agrupacion;
+    //                }
+    //                else{
+    //                  correcto_agru = false;
+    //                  nombre_agru = '';
+    //                }
+    //               // output_uni += '\n';
+    //               // output_sm12 += '<div class="form-group col-sm-12"> </div>\n';
+    //               $.each(data.eti, function (keye, dataeti) {
+    //                 //console.log("keya: " + keya + " data: " + nombre_agru + ' keye: ' + keye + ' !dataeti: ' + !dataeti);
+    //                 if (correcto_agru && keye == "correctoe" && !dataeti){
+    //                  //Para completar lo que tiene que hacer la Agrupación
+    //                  console.log("data: " + nombre_agru);
+    //                  output_sm12 += '<div class="form-group col-sm-12">'+ nombre_agru +'</div>\n';
+    //                 }
+    //
+    //                 //Sólo para las etiquetas finales
+    //                 if(keye == "correctoe" && dataeti){
+    //
+    //                   output_sm6 += '<div class="form-group col-sm-6 list-chk skin-section">\n';
+    //                   $.each(data.eti.datose, function (indexe, etique) {
+    //                       //console.log("key: " + indexe + " data: " + etique.etiqueta);
+    //                       //output_sm6 += '\n';
+    //                       if(etique.tpo_val_etiqueta == "CHK"){
+    //                         output_sm6+= '\t<input type="checkbox" name="chke-'+ etique.ide_etiqueta +'" id="chke-'+ etique.ide_etiqueta +'" value="1"> '+ etique.etiqueta +'<br>\n';
+    //                       }
+    //
+    //                    })
+    //                    output_sm6+= '</div>\n';
+    //                 }
+    //               })
+    //               output_uni += output_sm12 + output_sm6;
+    //               output_sm12 = '';
+    //               output_sm6 = '';
+    //            })
+    //            output = output_uni;
+    //
+    //           })
+    //           $("#formulario-container").html(output);
+    //           $("#formulario-container").show();
+    //           $("#formulario-fila").show();
+    //        }
+    //        else {
+    //          console.log( "Entró al else");
+    //          $("#formulario-fila").hide();
+    //        }
+    //        $('.list-chk input').on('ifCreated ifClicked ifChanged ifChecked ifUnchecked', function(event){
+    //                //console.log('chk: ' + this.id);
+    //                }).iCheck({
+    //            checkboxClass: 'icheckbox_square-blue',
+    //            radioClass: 'iradio_square-blue',
+    //            increaseArea: '20%'
+    //        });
+    //    })
+    //    .fail(function( jqXHR, textStatus, errorThrown ) {
+    //        if ( console && console.log ) {
+    //            console.log( "La solicitud a fallado: " +  textStatus);
+    //        }
+    //   })
+    //
+    //
+    // }
 
     function showForm_2(event, ui) {
       var ruta_agrupacion2  = $('#ruta_agrupacion2').val();
@@ -166,29 +166,60 @@ $(document).ready(function() {
 
               output_titulo = '\n';
               $.each(response.agru, function(key, value) {
+                  //console.log('value.ide_agrupacion: ' + value.ide_agrupacion + ' value.agrupacion: ' + value.agrupacion);
+                  output_titulo = '\n';
+                  out_etique = 0;
                   out_etique = trae_etiquetas(value.ide_agrupacion) + '\n';
-                  if (out_etique == '0'){
-                    output_titulo += '\n<div class="form-group col-sm-12">\n';
-                    output_titulo += value.agrupacion;
-                    output_titulo += '\n</div>\n';
+                  //console.log('out_etique: '+ out_etique);
+                  if (out_etique == 0){
+
+                    if(value.tpo_val_agrupacion == "CHK"){
+                      output_titulo += '\n<div class="form-group col-sm-12 list-chk skin-section">\n';
+                      output_titulo += '\t<input type="checkbox" name="chk-'+ value.ide_agrupacion +'" id="chk-'+ value.ide_agrupacion +'" value="1"> '+ value.agrupacion +'<br>\n';
+                      output_titulo += '\n</div>\n';
+                    }
+                    if(value.tpo_val_agrupacion == "TXT"){
+                      output_titulo += '\n<div class="form-group col-sm-12">\n';
+                      output_titulo += '\t<label for="txt-'+ value.ide_agrupacion +'">' + value.agrupacion + '</label>';
+                      output_titulo += ' <input type="text" class="form-control" name="txt-'+ value.ide_agrupacion +'" id="txt-'+ value.ide_agrupacion +'"><br>\n';
+                      output_titulo += '\n</div>\n';
+                    }
+                    if(value.tpo_val_agrupacion == "GLO"){
+                      output_titulo += '\n<div class="form-group col-sm-12">\n';
+                      output_titulo += '\t<label for="glo-'+ value.ide_agrupacion +'">' + value.agrupacion + '</label>';
+                      output_titulo += ' <textarea rows="5" class="form-control" id="glo-'+ value.ide_agrupacion +'" name="glo-'+ value.ide_agrupacion +'"></textarea><br>\n';
+                      output_titulo += '\n</div>\n';
+                    }
+                    if(value.tpo_val_agrupacion == "TIT"){
+                      output_titulo += '\n<div class="form-group col-sm-12">\n';
+                      output_titulo += value.agrupacion;
+                      output_titulo += '\n</div>\n';
+                    }
+
+
+
+
                   }
                   else {
                     output_titulo += '\n<div class="form-group col-sm-6">\n';
-                    output_titulo += value.agrupacion;
+                    output_titulo += '\t<label for="lab-'+ value.ide_agrupacion +'">' + value.agrupacion + '</label>';
                     output_titulo += '\n</div>\n';
+                    output_titulo = output_titulo + out_etique;
                   }
-                  output_titulo += output_titulo + out_etique;
+
+                  output_final += output_titulo;
                   //output_unificado += output_titulo + output_etiqueta;
 
               })
-              console.log("out_etique: " + output_titulo);
-              output_final += output_titulo;
+              //console.log("out_etique: " + output_titulo);
+              //output_final += output_titulo;
+              //console.log('output_final: ' + output_final);
               $("#formulario-container").html(output_final);
               $("#formulario-container").show();
               $("#formulario-fila").show();
             }
             else {
-              console.log( "Entró al else del response");
+              //console.log( "Entró al else del response");
               $("#formulario-fila").hide();
             }
             $('.list-chk input').on('ifCreated ifClicked ifChanged ifChecked ifUnchecked', function(event){
@@ -246,12 +277,15 @@ $(document).ready(function() {
                 if(datae.tpo_val_etiqueta == "RAD"){
                   output_etiqueta += '\t<input type="radio" name="rade-'+ datae.ide_agrupacion +'" id="rade-'+ datae.ide_agrupacion +'" value="'+ datae.ide_etiqueta +'"> '+ datae.etiqueta +'<br>\n';
                 }
-                if(datae.tpo_val_etiqueta == "0"){
-                  output_etiqueta = "0";
+                if(datae.tpo_val_etiqueta == '0'){
+                  output_etiqueta = '0';
                 }
               })
-              if (output_etiqueta != "0"){
-                  output_etiqueta += '</div>\n';
+              if (output_etiqueta != '0'){
+                output_etiqueta += '</div>\n';
+              }
+              else {
+                output_etiqueta = '0';
               }
 
               output_unificado += output_etiqueta;
@@ -270,7 +304,7 @@ $(document).ready(function() {
           .fail(function( jqXHR, textStatus, errorThrown ) {
               if ( console && console.log ) {
                   console.log( "La solicitud a fallado: " +  textStatus);
-                  output_unificado = '';
+                  output_unificado = '0';
                   return output_unificado;
               }
           })

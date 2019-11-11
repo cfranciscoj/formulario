@@ -134,21 +134,21 @@ return [
             //'can'  => 'todos',
         ],
         [
-            'text' => 'formularios',
+            'text' => 'Formularios',
             'url'  => 'comun/formulario',
             'icon' => 'fas fa-fw fa-check-square',
             //'can'  => 'todos',
         ],
 
-        ['header' => 'account_settings'],
+        ['header' => 'Configuración de la cuenta'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'Profile',
+            'url'  => 'profile/datospersonales',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'text' => 'Cambio de clave',
+            'url'  => 'profile/cambioclave',
             'icon' => 'fas fa-fw fa-lock',
         ],
     ],

@@ -26,7 +26,8 @@ Route::post('/comun/agrupacion2', 'Comun\FormularioController@agrupacion2')->nam
 Route::post('/comun/etiqueta2', 'Comun\FormularioController@etiqueta2')->name('etiqueta2');
 
 // Admin - Profile
-
+Route::get('/profile/datospersonales', 'Profile\ProfileController@DatosPersonales')->name('datospersonales');
+Route::get('/profile/cambioclave', 'Profile\ProfileController@CambioClave')->name('cambioclave');
 
 
 

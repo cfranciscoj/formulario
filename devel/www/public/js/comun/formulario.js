@@ -1,19 +1,6 @@
 $(document).ready(function() {
 
-    //window.sessionStorage();
-    //$("#formulario-fila").hide();
 
-    // class OutEti {
-    //   constructor() {
-    //     this.etiqueta = '';
-    //   }
-    //   act_etiqueta(brand) {
-    //     this.etiqueta = brand;
-    //   }
-    //   out_etiqueta() {
-    //     return this.etiqueta;
-    //   }
-    // }
 
 
     $('.js-formulario-basic-single').select2();
@@ -22,117 +9,6 @@ $(document).ready(function() {
         showForm_2();
     });
 
-    // $('.input[type="checkbox"]').on('ifCreated ifClicked ifChanged ifChecked ifUnchecked ifDisabled ifEnabled ifDestroyed', function(event){
-    //           callbacks_list.prepend('<li><span>#' + this.id + '</span> is ' + event.type.replace('if', '').toLowerCase() + '</li>');
-    //         }).iCheck({
-    //     checkboxClass: 'icheckbox_square-blue',
-    //     radioClass: 'iradio_square-blue',
-    //     increaseArea: '20%'
-    // });
-
-
-
-
-    // function showForm(event, ui) {
-    //   var ruta_agrupacion  = $('#ruta_agrupacion').val();
-    //   var ide_titulo       = $('#formularios').val();
-    //   var output           = '';
-    //   var output_sm6       = '';
-    //   var output_sm12      = '';
-    //   var output_uni       = '';
-    //
-    //
-    //   $.ajax({
-    //       headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-    //       // En data puedes utilizar un objeto JSON, un array o un query string
-    //       data: {"ide_titulo" : ide_titulo},
-    //       //Cambiar a type: POST si necesario
-    //       type: "POST",
-    //       // Formato de datos que se espera en la respuesta
-    //       dataType: "json",
-    //       // URL a la que se enviará la solicitud Ajax
-    //       url: ruta_agrupacion,
-    //   })
-    //    .done(function( response, textStatus, jqXHR ) {
-    //        var correcto_agru    = false;
-    //        var nombre_agru      = '';
-    //
-    //        if ( console && console.log ) {
-    //            console.log( "La solicitud se ha completado correctamente." );
-    //        }
-    //        if (response.correcto) {
-    //
-    //          output_uni = '';
-    //          output_sm6 = '';
-    //          output_sm12 = '\n';
-    //          $.each(response.datos, function(key, value) {
-    //            $.each(value, function (keya, data) {
-    //
-    //                if (keya == 0){
-    //                  //Para completar lo que tiene que hacer la Agrupación
-    //                  correcto_agru = true;
-    //                  nombre_agru = data.agrupacion;
-    //                }
-    //                else{
-    //                  correcto_agru = false;
-    //                  nombre_agru = '';
-    //                }
-    //               // output_uni += '\n';
-    //               // output_sm12 += '<div class="form-group col-sm-12"> </div>\n';
-    //               $.each(data.eti, function (keye, dataeti) {
-    //                 //console.log("keya: " + keya + " data: " + nombre_agru + ' keye: ' + keye + ' !dataeti: ' + !dataeti);
-    //                 if (correcto_agru && keye == "correctoe" && !dataeti){
-    //                  //Para completar lo que tiene que hacer la Agrupación
-    //                  console.log("data: " + nombre_agru);
-    //                  output_sm12 += '<div class="form-group col-sm-12">'+ nombre_agru +'</div>\n';
-    //                 }
-    //
-    //                 //Sólo para las etiquetas finales
-    //                 if(keye == "correctoe" && dataeti){
-    //
-    //                   output_sm6 += '<div class="form-group col-sm-6 list-chk skin-section">\n';
-    //                   $.each(data.eti.datose, function (indexe, etique) {
-    //                       //console.log("key: " + indexe + " data: " + etique.etiqueta);
-    //                       //output_sm6 += '\n';
-    //                       if(etique.tpo_val_etiqueta == "CHK"){
-    //                         output_sm6+= '\t<input type="checkbox" name="chke-'+ etique.ide_etiqueta +'" id="chke-'+ etique.ide_etiqueta +'" value="1"> '+ etique.etiqueta +'<br>\n';
-    //                       }
-    //
-    //                    })
-    //                    output_sm6+= '</div>\n';
-    //                 }
-    //               })
-    //               output_uni += output_sm12 + output_sm6;
-    //               output_sm12 = '';
-    //               output_sm6 = '';
-    //            })
-    //            output = output_uni;
-    //
-    //           })
-    //           $("#formulario-container").html(output);
-    //           $("#formulario-container").show();
-    //           $("#formulario-fila").show();
-    //        }
-    //        else {
-    //          console.log( "Entró al else");
-    //          $("#formulario-fila").hide();
-    //        }
-    //        $('.list-chk input').on('ifCreated ifClicked ifChanged ifChecked ifUnchecked', function(event){
-    //                //console.log('chk: ' + this.id);
-    //                }).iCheck({
-    //            checkboxClass: 'icheckbox_square-blue',
-    //            radioClass: 'iradio_square-blue',
-    //            increaseArea: '20%'
-    //        });
-    //    })
-    //    .fail(function( jqXHR, textStatus, errorThrown ) {
-    //        if ( console && console.log ) {
-    //            console.log( "La solicitud a fallado: " +  textStatus);
-    //        }
-    //   })
-    //
-    //
-    // }
 
     function showForm_2(event, ui) {
       var ruta_agrupacion2  = $('#ruta_agrupacion2').val();
@@ -175,19 +51,19 @@ $(document).ready(function() {
 
                     if(value.tpo_val_agrupacion == "CHK"){
                       output_titulo += '\n<div class="form-group col-sm-12 list-chk skin-section">\n';
-                      output_titulo += '\t<input type="checkbox" name="chk-'+ value.ide_agrupacion +'" id="chk-'+ value.ide_agrupacion +'" value="1"> '+ value.agrupacion +'<br>\n';
+                      output_titulo += '\t<input type="checkbox" name="'+ value.ide_agrupacion +'" id="'+ value.ide_agrupacion +'" value="'+ value.ide_agrupacion +'"> '+ value.agrupacion +'<br>\n';
                       output_titulo += '\n</div>\n';
                     }
                     if(value.tpo_val_agrupacion == "TXT"){
                       output_titulo += '\n<div class="form-group col-sm-12">\n';
                       output_titulo += '\t<label for="txt-'+ value.ide_agrupacion +'">' + value.agrupacion + '</label>';
-                      output_titulo += ' <input type="text" class="form-control" name="txt-'+ value.ide_agrupacion +'" id="txt-'+ value.ide_agrupacion +'"><br>\n';
+                      output_titulo += ' <input type="text" class="form-control" name="'+ value.ide_agrupacion +'" id="'+ value.ide_agrupacion +'"><br>\n';
                       output_titulo += '\n</div>\n';
                     }
                     if(value.tpo_val_agrupacion == "GLO"){
                       output_titulo += '\n<div class="form-group col-sm-12">\n';
                       output_titulo += '\t<label for="glo-'+ value.ide_agrupacion +'">' + value.agrupacion + '</label>';
-                      output_titulo += ' <textarea rows="5" class="form-control" id="glo-'+ value.ide_agrupacion +'" name="glo-'+ value.ide_agrupacion +'"></textarea><br>\n';
+                      output_titulo += ' <textarea rows="5" class="form-control" id="'+ value.ide_agrupacion +'" name="'+ value.ide_agrupacion +'"></textarea><br>\n';
                       output_titulo += '\n</div>\n';
                     }
                     if(value.tpo_val_agrupacion == "TIT"){
@@ -264,18 +140,18 @@ $(document).ready(function() {
               $.each(respuesta.datose, function(keye, datae) {
               //  console.log( "key: " + keye + " value: " + datae.etiqueta );
                 if(datae.tpo_val_etiqueta == "CHK"){
-                  output_etiqueta += '\t<input type="checkbox" name="chke-'+ datae.ide_etiqueta +'" id="chke-'+ datae.ide_etiqueta +'" value="1"> '+ datae.etiqueta +'<br>\n';
+                  output_etiqueta += '\t<input type="checkbox" name="'+ datae.ide_etiqueta +'" id="'+ datae.ide_etiqueta +'" value="'+ datae.ide_etiqueta +'"> '+ datae.etiqueta +'<br>\n';
                 }
                 if(datae.tpo_val_etiqueta == "TXT"){
-                  output_etiqueta += '\t<label for="txte-'+ datae.ide_etiqueta +'">' + datae.etiqueta + '</label>';
-                  output_etiqueta += ' <input type="text" name="txte-'+ datae.ide_etiqueta +'" id="txte-'+ datae.ide_etiqueta +'"><br>\n';
+                  output_etiqueta += '\t<label for="'+ datae.ide_etiqueta +'">' + datae.etiqueta + '</label>';
+                  output_etiqueta += ' <input type="text" class="form-control" name="'+ datae.ide_etiqueta +'" id="'+ datae.ide_etiqueta +'"><br>\n';
                 }
                 if(datae.tpo_val_etiqueta == "GLO"){
                   output_etiqueta += '\t<label for="gloe-'+ datae.ide_etiqueta +'">' + datae.etiqueta + '</label>';
-                  output_etiqueta += ' <textarea rows="4" cols="50" name="gloe-'+ datae.ide_etiqueta +'"></textarea><br>\n';
+                  output_etiqueta += ' <textarea rows="5" class="form-control" id="'+ datae.ide_etiqueta +'" name="'+ datae.ide_etiqueta +'"></textarea><br>\n';
                 }
                 if(datae.tpo_val_etiqueta == "RAD"){
-                  output_etiqueta += '\t<input type="radio" name="rade-'+ datae.ide_agrupacion +'" id="rade-'+ datae.ide_agrupacion +'" value="'+ datae.ide_etiqueta +'"> '+ datae.etiqueta +'<br>\n';
+                  output_etiqueta += '\t<input type="radio" name="rad-'+ datae.ide_agrupacion +'" id="rad-'+ datae.ide_agrupacion +'" value="'+ datae.ide_etiqueta +'"> '+ datae.etiqueta +'<br>\n';
                 }
                 if(datae.tpo_val_etiqueta == '0'){
                   output_etiqueta = '0';
@@ -312,5 +188,89 @@ $(document).ready(function() {
           return output_unificado;
 
     }
+
+    $('#grabar_formulario').click(function(e){
+        e.preventDefault();
+        //showForm_2();
+        var jsonObj = [];
+        $("form input[type='radio']:checked").each(function() {
+          console.log("Valor de los Radio : " + this.id + " value: " + this.value);
+          item = {}
+          item ["ide"] = this.value;
+          item ["valor"] = '1';
+
+          jsonObj.push(item);
+        });
+
+        $("form input[type='checkbox']:checked").each(function() {
+          console.log("id checkbox: " + this.id + " value: " + this.value);
+          item = {}
+          item ["ide"] = this.id;
+          item ["valor"] = '1';
+
+          jsonObj.push(item);
+        });
+
+        $("form input[type='text'], textarea").each(function() {
+          if (this.value != ""){
+            console.log("id text: " + this.id + " value: " + this.value);
+            item = {}
+            item ["ide"] = this.id;
+            item ["valor"] = this.value;
+
+            jsonObj.push(item);
+          }
+
+        });
+
+        // $("form textarea").each(function() {
+        //   console.log("id textarea: " + this.id + " value: " + this.value);
+        // });
+
+        if(jsonObj.length != 0){
+          console.log(jsonObj);
+          graba_formulario(jsonObj);
+
+        }
+        else {
+          console.log("jsonObj = vacio")
+        }
+
+
+
+
+    });
+
+    function graba_formulario(valor){
+      var ruta_grabador  = $('#ruta_grabador').val();
+
+      $.ajax({
+          headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+          // En data puedes utilizar un objeto JSON, un array o un query string
+          data: {"valor" : valor},
+          //Cambiar a type: POST si necesario
+          type: "POST",
+          // Formato de datos que se espera en la respuesta
+          dataType: "json",
+          // URL a la que se enviará la solicitud Ajax
+          url: ruta_grabador,
+          // syncronico
+          async: false
+          })
+          .done(function( respuesta, textStatus, jqXHR ) {
+            console.log( "Grabó los datos");
+
+          })
+          .fail(function( jqXHR, textStatus, errorThrown ) {
+              if ( console && console.log ) {
+                  console.log( "La solicitud a fallado: " +  textStatus);
+              }
+          })
+
+    }
+
+
+
+
 
 });

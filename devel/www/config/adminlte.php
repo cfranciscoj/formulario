@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'blue-light',
+    'skin' => 'blue',
 
     /*
     |--------------------------------------------------------------------------
@@ -58,7 +58,7 @@ return [
     |
     */
 
-    'layout' => 'top-nav',
+    'layout' => 'fixed',
 
     /*
     |--------------------------------------------------------------------------
@@ -91,7 +91,7 @@ return [
 
     'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
-    'right_sidebar_theme' => 'light',
+    'right_sidebar_theme' => 'dark',
     'right_sidebar_slide' => true,
 
     /*
@@ -126,30 +126,37 @@ return [
     */
 
     'menu' => [
-        ['header' => 'main_navigation'],
+        ['header' => 'Menú'],
         [
             'text' => 'Inicio',
             'url'  => 'home',
             'icon' => 'fas fa-fw fa-home',
-            //'can'  => 'todos',
+            'can'  => 'Todos',
         ],
         [
             'text' => 'Formularios',
             'url'  => 'comun/formulario',
             'icon' => 'fas fa-fw fa-check-square',
-            //'can'  => 'todos',
+            'can'  => 'Todos',
         ],
-
+        [
+            'text' => 'Admin Formulario',
+            'url'  => 'admin/formulario',
+            'icon' => 'fas fa-fw fa-cog',
+            'can'  => 'Admin',
+        ],
         ['header' => 'Configuración de la cuenta'],
         [
             'text' => 'Profile',
             'url'  => 'profile/datospersonales',
             'icon' => 'fas fa-fw fa-user',
+            'can'  => 'Todos',
         ],
         [
             'text' => 'Cambio de clave',
             'url'  => 'profile/cambioclave',
             'icon' => 'fas fa-fw fa-lock',
+            'can'  => 'Todos',
         ],
     ],
 

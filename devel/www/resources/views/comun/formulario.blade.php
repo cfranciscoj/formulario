@@ -15,12 +15,12 @@
       <input type="hidden" name="ruta_agrupacion2" id="ruta_agrupacion2" value="{{ route('agrupacion2') }}">
       <input type="hidden" name="ruta_etiqueta2" id="ruta_etiqueta2" value="{{ route('etiqueta2') }}">
       <input type="hidden" name="ruta_grabador" id="ruta_grabador" value="{{ route('grabaformulario') }}">
-      
+
       {!! csrf_field() !!}
       <!-- Inicio bloque 1 -->
       <div class="row">
         <div class="form-group col-sm-12">
-          <div class="box">
+          <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Selección de formulario</h3>
 
@@ -69,7 +69,7 @@
       <!-- Inicio bloque 2 -->
       <div class="row oculto" id="formulario-fila">
         <div class="form-group col-sm-12">
-          <div class="box">
+          <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Formulario</h3>
 

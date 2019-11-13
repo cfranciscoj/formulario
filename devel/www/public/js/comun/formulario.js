@@ -151,7 +151,7 @@ $(document).ready(function() {
                   output_etiqueta += ' <textarea rows="5" class="form-control" id="'+ datae.ide_etiqueta +'" name="'+ datae.ide_etiqueta +'"></textarea><br>\n';
                 }
                 if(datae.tpo_val_etiqueta == "RAD"){
-                  output_etiqueta += '\t<input type="radio" name="rad-'+ datae.ide_agrupacion +'" id="rad-'+ datae.ide_agrupacion +'" value="'+ datae.ide_etiqueta +'"> '+ datae.etiqueta +'<br>\n';
+                  output_etiqueta += '\t<input type="radio" name="'+ datae.ide_agrupacion +'" id="'+ datae.ide_agrupacion +'" value="'+ datae.ide_etiqueta +'"> '+ datae.etiqueta +'<br>\n';
                 }
                 if(datae.tpo_val_etiqueta == '0'){
                   output_etiqueta = '0';
@@ -194,31 +194,44 @@ $(document).ready(function() {
         //showForm_2();
         var jsonObj = [];
         $("form input[type='radio']:checked").each(function() {
-          console.log("Valor de los Radio : " + this.id + " value: " + this.value);
+          //console.log("Valor de los Radio : " + this.id + " value: " + this.value);
           item = {}
           item ["ide"] = this.value;
           item ["valor"] = '1';
 
           jsonObj.push(item);
+
+          $("#" + this.id).removeProp("checked");
+          $("#" + this.id).prop("checked",false);
+          $("#" + this.id).iCheck('update');
+
         });
 
         $("form input[type='checkbox']:checked").each(function() {
-          console.log("id checkbox: " + this.id + " value: " + this.value);
+          //console.log("id checkbox: " + this.id + " value: " + this.value);
           item = {}
           item ["ide"] = this.id;
           item ["valor"] = '1';
 
           jsonObj.push(item);
+
+          $("#" + this.id).removeProp("checked");
+          $("#" + this.id).prop("checked",false);
+          $("#" + this.id).iCheck('update');
+
         });
+        //$("form input[type='checkbox']").prop("checked",true);
 
         $("form input[type='text'], textarea").each(function() {
           if (this.value != ""){
-            console.log("id text: " + this.id + " value: " + this.value);
+            //console.log("id text: " + this.id + " value: " + this.value);
             item = {}
             item ["ide"] = this.id;
             item ["valor"] = this.value;
 
             jsonObj.push(item);
+            $('#'+this.id).val('');
+
           }
 
         });
@@ -228,16 +241,16 @@ $(document).ready(function() {
         // });
 
         if(jsonObj.length != 0){
-          console.log(jsonObj);
+          //console.log(jsonObj);
           graba_formulario(jsonObj);
 
         }
         else {
-          console.log("jsonObj = vacio")
+          console.log("jsonObj = vacio");
         }
 
 
-
+        $("#frmFormularios")[0].reset();
 
     });
 
@@ -263,7 +276,7 @@ $(document).ready(function() {
           })
           .fail(function( jqXHR, textStatus, errorThrown ) {
               if ( console && console.log ) {
-                  console.log( "La solicitud a fallado: " +  textStatus);
+                  console.log( "La solicitud de grabado a fallado: " +  textStatus);
               }
           })
 

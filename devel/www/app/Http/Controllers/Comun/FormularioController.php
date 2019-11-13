@@ -107,16 +107,19 @@ class FormularioController extends Controller
 
     public function GrabaFormulario(Request $request)
     {
+
       $array_data = array();
       $array_data = request()->valor;
       $IdUsuario = Auth::id();
       $Formulario = new Formulario;
 
       foreach ($array_data as $key=>$value) {
-          var_dump($value["valor"]);
+          //var_dump($value["valor"]);
           $ide = $Formulario->GrabaRespuesta($value["ide"],$value["valor"],$IdUsuario);
 
       }
+      $arrayName = array('ide' => $ide );
+      return json_encode($arrayName);
     }
 
 }

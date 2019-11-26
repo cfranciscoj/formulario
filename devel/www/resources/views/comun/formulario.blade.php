@@ -17,6 +17,11 @@
       <input type="hidden" name="ruta_grabador" id="ruta_grabador" value="{{ route('grabaformulario') }}">
 
       {!! csrf_field() !!}
+      @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+      @endif
       <!-- Inicio bloque 1 -->
       <div class="row">
         <div class="form-group col-sm-12">

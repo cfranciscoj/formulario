@@ -41,9 +41,17 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('Usuario', function($user) {
             return $user->hasAnyRole('user');
         });
-        //  Para Todos los perfiles, menos el vacio
+        //  Para Todos los perfiles, menos vacio
         Gate::define('Todos', function($user) {
             return $user->hasAnyRole(['admin','super','user']);
+        });
+        //  Para Todos los perfiles
+        Gate::define('Autenticados', function($user) {
+            return $user->hasAnyRole(['admin','super','user','vacio']);
+        });
+        //  Para Todos los perfiles
+        Gate::define('Nada', function($user) {
+            return $user->hasAnyRole(['vacio']);
         });
     }
 }

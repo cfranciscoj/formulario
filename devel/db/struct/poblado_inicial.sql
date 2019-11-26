@@ -12,6 +12,8 @@ INSERT INTO frmdb.frm_tipo_valor (cod_tpo_val, nom_largo           , nom_corto, 
 
 INSERT INTO frmdb.frm_tipo_valor (cod_tpo_val, nom_largo           , nom_corto, fch_crea           , usr_crea, fch_mod, usr_mod) 
                            VALUES('TIT'      , 'Título', 'título'  , current_timestamp(), 10    , NULL   , NULL);
+INSERT INTO frmdb.frm_tipo_valor(cod_tpo_val , nom_largo , nom_corto , fch_crea,            usr_crea) 
+                           VALUES('ETQ'      , 'Etiqueta', 'etiqueta', current_timestamp(), 10);                           
 
                           
                           

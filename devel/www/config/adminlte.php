@@ -131,7 +131,7 @@ return [
             'text' => 'Inicio',
             'url'  => 'home',
             'icon' => 'fas fa-fw fa-home',
-            'can'  => 'Todos',
+            'can'  => 'Autenticados',
         ],
         [
             'text' => 'Formularios',
@@ -145,18 +145,24 @@ return [
             'icon' => 'fas fa-fw fa-cog',
             'can'  => 'Admin',
         ],
+        [
+            'text' => 'Admin Usuarios',
+            'url'  => 'admin/formulario',
+            'icon' => 'fas fa-fw fa-user',
+            'can'  => 'Admin',
+        ],
         ['header' => 'Configuración de la cuenta'],
         [
             'text' => 'Profile',
             'url'  => 'profile/datospersonales',
             'icon' => 'fas fa-fw fa-user',
-            'can'  => 'Todos',
+            'can'  => 'Autenticados',
         ],
         [
             'text' => 'Cambio de clave',
             'url'  => 'profile/cambioclave',
             'icon' => 'fas fa-fw fa-lock',
-            'can'  => 'Todos',
+            'can'  => 'Autenticados',
         ],
     ],
 

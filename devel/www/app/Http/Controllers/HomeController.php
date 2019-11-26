@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //return redirect()->action('HomeController@index');
+        if (Auth::user()->hasRole('admin')) {
+            return view('home');
+        } elseif (Auth::user()->hasRole('user')) {
+            return redirect()->route('formulario');//->with('status', 'Profile updated!');
+            ///return view('formulario')->with('status', 'Profile updated!');
+        } elseif (Auth::user()->hasRole('super')) {
+            return view('home');
+        } else {
+            return view('all');
+        }
+
+
+        //return view('home');
     }
 }

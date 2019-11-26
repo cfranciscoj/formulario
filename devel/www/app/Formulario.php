@@ -59,18 +59,27 @@ EOT;
     }
 
 
-    public function GrabaRespuesta($ide_detalle, $res_valor, $usr_creacion)
+    public function GrabaRespuesta($ide_detalle, $res_valor, $usr_creacion,$res_formulario)
     {
       $id = DB::table('frm_resultado_det')->insertGetId(
             ['id_pla_det' => $ide_detalle,
              'res_valor' => $res_valor,
-             'res_nro_valor' => 1,
-             'usr_crea' => $usr_creacion]
-);
+             'res_formulario' => $res_formulario,
+             'usr_crea' => $usr_creacion]);
         return $id;
 
 
     }
+
+    public function TraeSecuenciaFormulario()
+    {
+        $qry = <<<EOT
+                      SELECT NEXTVAL(frm_seq_formularios) AS nro_formulario;
+EOT;
+        return DB::select($qry);
+
+    }
+
 
 
 }

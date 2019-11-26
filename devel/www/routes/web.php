@@ -18,6 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/all', 'HomeController@all')->name('all');
+
 
 // Comun - Formulario
 Route::get('/comun/formulario', 'Comun\FormularioController@index')->name('formulario');

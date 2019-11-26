@@ -1,3 +1,22 @@
+# Respuesta por día
+SELECT count(1), 
+       DATE_FORMAT(res.fch_crea, '%d-%m-%Y') as fecha
+  FROM frm_resultado_det res
+ GROUP
+    BY DATE_FORMAT(res.fch_crea, '%d-%m-%Y')
+       
+SELECT SUM(t1.formulario) as tot_form,
+       DATE_FORMAT(t1.fecha, '%d-%m-%Y') as fecha
+  FROM (SELECT 1 as formulario, 
+		       res.fch_crea as fecha
+		  FROM frm_resultado_det res
+		 GROUP
+		    BY res.fch_crea) as t1
+ GROUP
+    BY DATE_FORMAT(t1.fecha, '%d-%m-%Y')
+
+
+
 #Busca la Cabecera
 SELECT cab.titulo      AS titulo,
        cab.id_pla_cab  AS id_cabecera

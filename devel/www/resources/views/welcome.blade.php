@@ -23,7 +23,7 @@
 
            .bg {
              /* The image used */
-             background-image: url("{{ asset('images/welcome/document-3271743_1920.jpg') }}");
+             background-image: url("{{ asset('images/welcome/paper-3249922_1920.jpg') }}");
 
              /* Full height */
              height: 100%;
@@ -61,6 +61,7 @@
 
             .title {
                 font-size: 84px;
+                color: #ffffff;
             }
 
             .links > a {
@@ -98,7 +99,7 @@
             <div class="content">
 
                 <div class="title m-b-md">
-                    Organizador
+                    Formulario
                 </div>
 
             </div> -->

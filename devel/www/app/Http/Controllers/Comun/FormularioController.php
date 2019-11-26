@@ -110,12 +110,18 @@ class FormularioController extends Controller
 
       $array_data = array();
       $array_data = request()->valor;
+      $array_seq = array();
       $IdUsuario = Auth::id();
       $Formulario = new Formulario;
+      $array_seq = $Formulario->TraeSecuenciaFormulario();
+      foreach ($array_seq as $key=>$value) {
+        $seq_form = $value->nro_formulario;
+      }
+
 
       foreach ($array_data as $key=>$value) {
           //var_dump($value["valor"]);
-          $ide = $Formulario->GrabaRespuesta($value["ide"],$value["valor"],$IdUsuario);
+          $ide = $Formulario->GrabaRespuesta($value["ide"],$value["valor"],$IdUsuario,$seq_form);
 
       }
       $arrayName = array('ide' => $ide );

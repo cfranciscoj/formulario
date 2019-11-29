@@ -34,7 +34,10 @@ Route::get('/profile/cambioclave', 'Profile\ProfileController@CambioClave')->nam
 
 // Admin
 Route::get('/admin/usuarios', 'Admin\AdminController@Usuarios')->name('usuarios');
+Route::get('/admin/listarusuarios', 'Admin\AdminController@ListarUsuarios')->name('listarusuarios');
 Route::get('/admin/formularios', 'Admin\AdminController@Formularios')->name('formularios');
+Route::get('/admin/listarformularios', 'Admin\AdminController@ListarFormularios')->name('listaformularios');
+
 
 /*
 Route::get('/home', function() {

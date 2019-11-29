@@ -6,8 +6,9 @@
     <h1>Creación de usuarios</h1>
     <ol class="breadcrumb">
       <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> Inicio</a></li>
-      <li class="active">Administarción de Usuarios</li>
-      <li class="active">Creación</li>
+      <li class="active">Administar</li>
+      <li class="active">Usuarios</li>
+      <li class="active">Crear</li>
     </ol>
 @stop
 

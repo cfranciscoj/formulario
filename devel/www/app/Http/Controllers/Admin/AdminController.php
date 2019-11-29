@@ -25,9 +25,21 @@ class AdminController extends Controller
       return view('admin/usuarios');
   }
 
+  public function ListarUsuarios()
+  {
+
+      return view('admin/enconstruccion');
+  }
+
   public function Formularios()
   {
 
-      return view('admin/usuarios');
+      return view('admin/enconstruccion');
+  }
+
+  public function ListarFormularios()
+  {
+
+      return view('admin/enconstruccion');
   }
 }

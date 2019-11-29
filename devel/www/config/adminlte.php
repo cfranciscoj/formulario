@@ -139,18 +139,55 @@ return [
             'icon' => 'fas fa-fw fa-check-square',
             'can'  => 'Todos',
         ],
-        [
-            'text' => 'Admin Formularios',
-            'url'  => 'admin/formularios',
+        [   'text' => 'Administrar',
             'icon' => 'fas fa-fw fa-cogs',
             'can'  => 'Admin',
-        ],
-        [
-            'text' => 'Admin Usuarios',
-            'url'  => 'admin/usuarios',
-            'icon' => 'fas fa-fw fa-cog',
-            'can'  => 'Admin',
-        ],
+            'submenu' => [
+                [           'text' => 'Formularios',
+                            'icon' => 'fas fa-fw fa-cog',
+                            'can'  => 'Admin',
+                            'submenu' => [
+                                [
+                                  'text' => 'Listar',
+                                  'icon' => 'fas fa-fw fa-search',
+                                  'url'  => 'admin/listarformularios',
+                                  'can'  => 'Admin',
+                                ],
+                                [
+                                  'text' => 'Crear',
+                                  'url'  => 'admin/formularios',
+                                  'icon' => 'fas fa-fw fa-plus-circle',
+                                  'can'  => 'Admin',
+                                ],
+                            ],
+                        ],
+                        [
+                            'text'    => 'Usuarios',
+                            'icon' => 'fas fa-fw fa-cog',
+                            'can'  => 'Admin',
+                            'submenu' => [
+                                [
+                                  'text' => 'Listar',
+                                  'icon' => 'fas fa-fw fa-search',
+                                  'url'  => 'admin/listarusuarios',
+                                  'can'  => 'Admin',
+                                ],
+                                [
+                                  'text' => 'Crear',
+                                  'url'  => 'admin/usuarios',
+                                  'icon' => 'fas fa-fw fa-plus-circle',
+                                  'can'  => 'Admin',
+                                ],
+                            ],
+                        ],
+                    ],
+            ],
+        // [
+        //     'text' => 'Admin Usuarios',
+        //     'url'  => 'admin/usuarios',
+        //     'icon' => 'fas fa-fw fa-cog',
+        //     'can'  => 'Admin',
+        // ],
         ['header' => 'Configuración de la cuenta'],
         [
             'text' => 'Profile',

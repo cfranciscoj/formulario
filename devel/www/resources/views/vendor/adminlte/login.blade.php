@@ -62,9 +62,11 @@
             </p>
             @if (config('adminlte.register_url', 'register'))
                 <p>
+                  @if (Route::has('register'))
                     <a href="{{ url(config('adminlte.register_url', 'register')) }}" class="text-center">
                         {{ __('adminlte::adminlte.register_a_new_membership') }}
                     </a>
+                  @endif
                 </p>
             @endif
         </div>

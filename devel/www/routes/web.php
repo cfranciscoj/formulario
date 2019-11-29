@@ -15,7 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/all', 'HomeController@all')->name('all');
@@ -27,11 +28,13 @@ Route::post('/comun/agrupacion2', 'Comun\FormularioController@agrupacion2')->nam
 Route::post('/comun/etiqueta2', 'Comun\FormularioController@etiqueta2')->name('etiqueta2');
 Route::post('/comun/grabaformulario', 'Comun\FormularioController@GrabaFormulario')->name('grabaformulario');
 
-// Admin - Profile
+// Profile
 Route::get('/profile/datospersonales', 'Profile\ProfileController@DatosPersonales')->name('datospersonales');
 Route::get('/profile/cambioclave', 'Profile\ProfileController@CambioClave')->name('cambioclave');
 
-
+// Admin
+Route::get('/admin/usuarios', 'Admin\AdminController@Usuarios')->name('usuarios');
+Route::get('/admin/formularios', 'Admin\AdminController@Formularios')->name('formularios');
 
 /*
 Route::get('/home', function() {

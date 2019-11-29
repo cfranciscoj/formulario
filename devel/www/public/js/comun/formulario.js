@@ -3,7 +3,9 @@ $(document).ready(function() {
 
 
 
-    $('.js-formulario-basic-single').select2();
+    $('.js-formulario-basic-single').select2({
+      width: '100%'
+    });
     $('#mostrar_formulario').click(function(e){
         e.preventDefault();
         showForm_2();

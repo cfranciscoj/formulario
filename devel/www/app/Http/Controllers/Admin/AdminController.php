@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Yajra\Datatables\DataTables;
+use Yajra\DataTables\DataTablesServiceProvider;
 use App\Admin as Admin;
+use App\Formulario as Formulario;
+
 
 class AdminController extends Controller
 {
@@ -39,7 +43,20 @@ class AdminController extends Controller
 
   public function ListarFormularios()
   {
-
-      return view('admin/enconstruccion');
+      $Formulario = new Formulario;
+      $Titulos = $Formulario->TraeTitulo();
+      return view('admin/listarformularios')->with(['Titulos'=>$Titulos]);
   }
+
+  public function ListarRespFormularios(Request $request)
+  {
+      $Admin = new Admin;
+      $ide_titulo = request()->ide_titulo;
+      $Respuestas = $Admin->TraePlanResp($ide_titulo);
+      //return json_encode($Respuestas);
+
+      return DataTables::of($Respuestas)->make(true);
+
+  }
+
 }

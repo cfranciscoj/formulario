@@ -37,6 +37,8 @@ Route::get('/admin/usuarios', 'Admin\AdminController@Usuarios')->name('usuarios'
 Route::get('/admin/listarusuarios', 'Admin\AdminController@ListarUsuarios')->name('listarusuarios');
 Route::get('/admin/formularios', 'Admin\AdminController@Formularios')->name('formularios');
 Route::get('/admin/listarformularios', 'Admin\AdminController@ListarFormularios')->name('listaformularios');
+Route::post('/admin/listarespuestas', 'Admin\AdminController@ListarRespFormularios')->name('listarespuestas');
+
 
 
 /*
@@ -56,3 +58,9 @@ Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
 */
+
+Auth::routes();
+
+Route::get('/home', function() {
+    return view('home');
+})->name('home')->middleware('auth');
